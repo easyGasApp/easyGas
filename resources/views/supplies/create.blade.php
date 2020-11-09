@@ -35,26 +35,25 @@
                   <label class="form-control-label" for="gas_station">Estabelecimento<span
                       class="small text-danger">*</span></label>
                   <input type="text" id="gas_station" class="form-control" name="gas_station"
-                    placeholder="Nome do posto">
+                    placeholder="Nome do posto de gasolina">
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group focused">
-                  <label class="form-control-label" for="brand">Marca</label>
-                  <input type="text" id="brand" class="form-control" name="brand" placeholder="Marca">
+                  <label class="form-control-label" for="price">Preço</label>
+                  <input type="number" id="price" class="form-control" name="price">
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group focused">
-                  <label class="form-control-label" for="model">Modelo</label>
-                  <input type="text" id="model" class="form-control" name="model" placeholder="Modelo">
+                  <label class="form-control-label" for="price_liter">Preço por Litro</label>
+                  <input type="number" id="price_liter" class="form-control" name="price_liter">
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="form-group focused">
-                  <label class="form-control-label" for="kilometers_litre">Km/L</label>
-                  <input type="number" id="kilometers_litre" class="form-control" name="kilometers_litre"
-                    placeholder="Km/L">
+                  <label class="form-control-label" for="date">Data</label>
+                  <input type="date" id="date" class="form-control" name="date">
                 </div>
               </div>
             </div>

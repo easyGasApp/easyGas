@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\VehicleRepository;
 use App\User;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -12,9 +12,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(VehicleRepository $vehicleRepository)
     {
         $this->middleware('auth');
+        $this->vehicleRepository = $vehicleRepository;
     }
 
     /**
@@ -25,12 +26,13 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::count();
+        $vehicles = $this->vehicleRepository->all();
 
         $widget = [
             'users' => $users,
             //...
         ];
 
-        return view('home', compact('widget'));
+        return view('home', compact('widget', 'vehicles'));
     }
 }

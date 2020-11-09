@@ -92,14 +92,6 @@
         </a>
       </li>
 
-      <!-- Nav Item - About -->
-      <li class="nav-item {{ Nav::isRoute('about') }}">
-        <a class="nav-link" href="{{ route('about') }}">
-          <i class="fas fa-fw fa-hands-helping"></i>
-          <span>{{ __('About') }}</span>
-        </a>
-      </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -151,7 +143,7 @@
               </div>
             </li>
 
-            <!-- Nav Item - Alerts -->
+            {{-- <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -262,7 +254,7 @@
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
               </div>
-            </li>
+            </li> --}}
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -316,7 +308,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Alejandro RH 2020</span>
+            <span>EasyGas 2020</span>
           </div>
         </div>
       </footer>

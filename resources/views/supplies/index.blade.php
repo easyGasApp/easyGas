@@ -44,10 +44,10 @@
             <tbody>
               @foreach($supplies as $supply)
                 <tr>
-                  <td>{{ $supply->license_plate }}</td>
-                  <td>{{ $supply->brand }}</td>
-                  <td>{{ $supply->model }}</td>
-                  <td>{{ $supply->kilometers_litre }}</td>
+                  <td>{{ $supply->gas_station }}</td>
+                  <td>{{ $supply->price }}</td>
+                  <td>{{ $supply->price_liter }}</td>
+                  <td>{{ date_format(date_create($supply->date), 'd/m/Y') }}</td>
                   <td class="text-center">
                     <a href="{{ route('supplies.edit',$supply->id) }}"
                       class="btn btn-warning btn-circle">

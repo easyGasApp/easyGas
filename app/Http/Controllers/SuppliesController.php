@@ -39,6 +39,8 @@ class SuppliesController extends Controller
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+
+        $this->middleware('auth');
     }
 
     /**
@@ -93,7 +95,7 @@ class SuppliesController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect(route('supplies.index'))->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -169,7 +171,7 @@ class SuppliesController extends Controller
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect(route('supplies.index'))->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
