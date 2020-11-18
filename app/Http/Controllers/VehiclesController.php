@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\VehicleCreateRequest;
 use App\Http\Requests\VehicleUpdateRequest;
 use App\Repositories\VehicleRepository;
 use App\Validators\VehicleValidator;
+use App\Repositories\UserRepository;
 
 /**
  * Class VehiclesController.
@@ -35,10 +37,11 @@ class VehiclesController extends Controller
      * @param VehicleRepository $repository
      * @param VehicleValidator $validator
      */
-    public function __construct(VehicleRepository $repository, VehicleValidator $validator)
+    public function __construct(VehicleRepository $repository, VehicleValidator $validator, UserRepository $users)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+        $this->users = $users;
 
         $this->middleware('auth');
     }
@@ -80,9 +83,7 @@ class VehiclesController extends Controller
     public function store(VehicleCreateRequest $request)
     {
         try {
-
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
             $vehicle = $this->repository->create($request->all());
 
             $response = [

@@ -1,14 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
+use Symfony\Contracts\Translation\TranslatorTrait;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use TranslatorTrait;
 
     /**
      * The attributes that are mass assignable.

@@ -21,6 +21,7 @@ class CreateSuppliesTable extends Migration
             $table->float('price', 5, 2);
             $table->float('price_liter', 5, 2);
             $table->string('date');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 		});
 	}

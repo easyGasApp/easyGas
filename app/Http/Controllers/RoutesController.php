@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\RouteCreateRequest;
@@ -83,6 +84,8 @@ class RoutesController extends Controller
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
             $route = $this->repository->create($request->all());
+
+            $route = $this->repository->update(['user_id' => Auth::id()], $route->id);
 
             $response = [
                 'message' => 'Route created.',
