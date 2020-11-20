@@ -11,6 +11,7 @@ use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\RouteCreateRequest;
 use App\Http\Requests\RouteUpdateRequest;
 use App\Repositories\RouteRepository;
+use App\Repositories\VehicleRepository;
 use App\Validators\RouteValidator;
 
 /**
@@ -36,10 +37,11 @@ class RoutesController extends Controller
      * @param RouteRepository $repository
      * @param RouteValidator $validator
      */
-    public function __construct(RouteRepository $repository, RouteValidator $validator)
+    public function __construct(RouteRepository $repository, RouteValidator $validator, VehicleRepository $vehicles)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+        $this->vehicles = $vehicles;
 
         $this->middleware('auth');
     }
@@ -65,7 +67,8 @@ class RoutesController extends Controller
     }
 
     public function create() {
-        return view('routes.create');
+        $vehicles = $this->vehicles->all();
+        return view('routes.create', compact('vehicles'));
     }
 
     /**

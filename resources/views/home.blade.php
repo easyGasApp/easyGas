@@ -91,18 +91,18 @@
             <thead>
               <tr>
                 <th>Usuário</th>
-                <th>Qtde. Abastecida</th>
-                <th>Qtde. Consumida</th>
+                <th>Quilometragem Disponível</th>
+                <th>Quilometragem Percorrida</th>
                 <th>Saldo</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($users as $user)
+              @foreach ($vehicle->users as $user)
               <tr>
-                  <td>{{ $user->name }}</td>
-                  <td>{{ $user->supply }}Km</td>
-                  <td>{{ $user->route }}Km</td>
-                  <td class='{{ $user->balance > 0 ? 'text-success' : 'text-danger' }}'>{{ $user->balance }}Km</td>
+                  <td>{{ $user['name'] }}</td>
+                  <td>{{ $user['supply'] }}Km</td>
+                  <td>{{ $user['route'] }}Km</td>
+                  <td class='{{ $user['balance'] > 0 ? 'text-success' : 'text-danger' }}'>{{ $user['balance'] }}Km</td>
               </tr>
               @endforeach
             </tbody>

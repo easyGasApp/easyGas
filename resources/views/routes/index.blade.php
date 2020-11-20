@@ -35,7 +35,7 @@
               <tr>
                 <th>Km inicial</th>
                 <th>Km final</th>
-                <th>tempo</th>
+                <th>Horário</th>
                 <th>Editar</th>
                 <th>Excluir</th>
               </tr>

@@ -21,6 +21,7 @@ class CreateRoutesTable extends Migration
             $table->float('final_kilometer', 5, 2);
             $table->string('time');
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('vehicle_id')->nullable();
             $table->timestamps();
 		});
 	}

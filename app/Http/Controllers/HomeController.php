@@ -41,8 +41,9 @@ class HomeController extends Controller
         $fuel_amount_all = 0;
 
         foreach ($vehicles as $vehicle) {
+            $calculated_users = [];
             foreach ($users as $user) {
-                $supplies = $this->supplies->findWhere(['user_id' => $user->id]);
+                $supplies = $this->supplies->findWhere(['user_id' => $user->id, 'vehicle_id' => $vehicle->id]);
                 $user_supply = 0;
                 $fuel_amount_user = 0;
 
@@ -51,9 +52,9 @@ class HomeController extends Controller
                     $fuel_amount_user += $supply->price;
                     $fuel_amount_all += $supply->price;
                 }
-                $user->supply = $user_supply * $vehicles->first()->kilometers_litre;
+                $user->supply = $user_supply * $vehicle->kilometers_litre;
 
-                $routes = $this->routes->findWhere(['user_id' => $user->id]);
+                $routes = $this->routes->findWhere(['user_id' => $user->id, 'vehicle_id' => $vehicle->id]);
                 $user->route = 0;
                     foreach ($routes as $route) {
                         if ($route) {
@@ -62,13 +63,22 @@ class HomeController extends Controller
                 }
 
                 $user->balance = $user->supply - $user->route;
+                $user = [
+                    'name' => $user->name,
+                    'supply' => $user->supply,
+                    'route' => $user->route,
+                    'balance' => $user->balance
+                ];
+                array_push($calculated_users, $user);
             }
+
+            $vehicle->users = $calculated_users;
         }
 
         $widget = [
             'users' => $usersCount,
-            'fuel_amount_user' => $fuel_amount_user,
-            'fuel_amount_all' => $fuel_amount_all
+            'fuel_amount_user' => $fuel_amount_user ?? 0,
+            'fuel_amount_all' => $fuel_amount_all ?? 0
         ];
 
         return view('home', compact('widget', 'vehicles', 'users'));

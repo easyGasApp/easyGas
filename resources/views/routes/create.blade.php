@@ -46,10 +46,29 @@
                     placeholder="Km">
                 </div>
               </div>
+
               <div class="col-lg-4">
                 <div class="form-group focused">
-                  <label class="form-control-label" for="time">Tempo</label>
-                  <input type="time" id="time" class="form-control" name="time" placeholder="tempo">
+                  <label class="form-control-label" for="vehicle">Veículo</label>
+                  <select type="text" id="vehicle" class="form-control" name="vehicle_id" placeholder="Veículo">
+                    @foreach($vehicles as $vehicle)
+                    <option value="{{ $vehicle->id }}">{{ $vehicle->model }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group focused">
+                  <label class="form-control-label" for="time">Hora Ínicial</label>
+                  <input type="time" id="time" class="form-control" name="time" placeholder="Hora Ínicial">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group focused">
+                  <label class="form-control-label" for="time">Hora Final</label>
+                  <input type="time" id="time" class="form-control" name="time" placeholder="Hora Final">
                 </div>
               </div>
             </div>

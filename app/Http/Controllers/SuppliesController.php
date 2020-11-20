@@ -11,6 +11,7 @@ use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\SupplyCreateRequest;
 use App\Http\Requests\SupplyUpdateRequest;
 use App\Repositories\SupplyRepository;
+use App\Repositories\VehicleRepository;
 use App\Validators\SupplyValidator;
 
 /**
@@ -36,10 +37,11 @@ class SuppliesController extends Controller
      * @param SupplyRepository $repository
      * @param SupplyValidator $validator
      */
-    public function __construct(SupplyRepository $repository, SupplyValidator $validator)
+    public function __construct(SupplyRepository $repository, SupplyValidator $validator, VehicleRepository $vehicles)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+        $this->vehicles = $vehicles;
 
         $this->middleware('auth');
     }
@@ -66,7 +68,8 @@ class SuppliesController extends Controller
 
     public function create()
     {
-        return view('supplies.create');
+        $vehicles = $this->vehicles->all();
+        return view('supplies.create', compact('vehicles'));
     }
 
     /**

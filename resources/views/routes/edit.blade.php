@@ -50,8 +50,8 @@
               </div>
               <div class="col-lg-4">
                 <div class="form-group focused">
-                  <label class="form-control-label" for="time">Tempo</label>
-                  <input type="time" id="time" class="form-control" name="time" placeholder="tempo"
+                  <label class="form-control-label" for="time">Hora Ínicial</label>
+                  <input type="time" id="time" class="form-control" name="time" placeholder="Hora Ínicial"
                     value="{{ $route->time }}">
                 </div>
               </div>
